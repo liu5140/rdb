@@ -2,7 +2,6 @@ package rdb
 
 import (
 	"errors"
-	"io"
 )
 
 type sliceBuffer struct {

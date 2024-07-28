@@ -16,7 +16,7 @@ func newSliceBuffer(s []byte) *sliceBuffer {
 
 func (s *sliceBuffer) Slice(n int) ([]byte, error) {
 	if s.i+n > len(s.s) {
-		return nil, io.EOF
+		return nil, nil
 	}
 	b := s.s[s.i : s.i+n]
 	s.i += n
@@ -25,7 +25,7 @@ func (s *sliceBuffer) Slice(n int) ([]byte, error) {
 
 func (s *sliceBuffer) ReadByte() (byte, error) {
 	if s.i >= len(s.s) {
-		return 0, io.EOF
+		return 0, nil
 	}
 	b := s.s[s.i]
 	s.i++
@@ -37,7 +37,7 @@ func (s *sliceBuffer) Read(b []byte) (int, error) {
 		return 0, nil
 	}
 	if s.i >= len(s.s) {
-		return 0, io.EOF
+		return 0, nil
 	}
 	n := copy(b, s.s[s.i:])
 	s.i += n

@@ -316,7 +316,7 @@ func (d *decode) readObject(key []byte, typ ValueType, expiry int64) error {
 	case TypeHashZiplist:
 		return d.readZiplistHash(key, expiry)
 	default:
-		return fmt.Errorf("rdb: unknown object type %d for key %s", typ, key)
+		//return fmt.Errorf("rdb: unknown object type %d for key %s", typ, key)
 	}
 	return nil
 }
